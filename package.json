@@ -1,0 +1,27 @@
+{
+  "name": "smsAPI",
+  "version": "1.0.0",
+  "description": "SMS API .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KapilRijhwani/smsAPI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KapilRijhwani/smsAPI/issues"
+  },
+  "homepage": "https://github.com/KapilRijhwani/smsAPI#readme",
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "express": "^4.16.4",
+    "joi": "^14.0.1",
+    "pg": "^7.6.0",
+    "redis": "^2.8.0"
+  }
+}
