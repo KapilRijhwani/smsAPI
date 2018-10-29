@@ -39,7 +39,7 @@ app.post('/inbound/sms',  (req, res) => {
     if(validateInboundResult != null){
         return res.json(validateInboundResult);
     }else{
-        return ({"message" : "All well", "error" : ""});
+        return res.json({"message" : "All well", "error" : ""});
         
        
     }
