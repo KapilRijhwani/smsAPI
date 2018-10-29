@@ -1,8 +1,25 @@
 const express = require('express');
 const app = express();
+const basicAuth = require('basic-auth');
 
 
 app.use(express.json());
+
+//Authorization of user using basicAuth module
+//Sending HTTP 403 in case of failure
+var auth = function(req, res, next){
+    var user = basicAuth(req);
+    if(!user || !user.name || !user.pass){
+        res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+        res.sendStatus(403);
+        return;
+    }
+    if(user.name === "k" && user.pass === "r")    {
+        next();
+       
+    }
+    
+}
 
 function validateMissingParams(req){
     const from = req.body.from;
@@ -28,7 +45,7 @@ function validateMissingParams(req){
 
 
 //API /inbound/sms
-app.post('/inbound/sms',  (req, res) => {
+app.post('/inbound/sms',  auth, (req, res) => {
     const validateInboundResult = validateMissingParams(req);
     const from = req.body.from;
     const to = req.body.to;
