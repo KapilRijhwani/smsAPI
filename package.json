@@ -2,7 +2,7 @@
   "name": "smsAPI",
   "version": "1.0.0",
   "description": "SMS API .",
-  "main": "index.js",
+  "main": "server2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server2"
