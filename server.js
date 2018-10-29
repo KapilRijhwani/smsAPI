@@ -12,8 +12,8 @@ const express = require('express');
 const app = express();
 const basicAuth = require('basic-auth');
 const pg = require('pg');
- const redis = require('redis');
- const client = redis.createClient();
+// const redis = require('redis');
+// const client = redis.createClient();
 
 const { Pool, Client } = require('pg')
 
