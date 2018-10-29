@@ -130,5 +130,5 @@ app.get('/inbound/sms/', function(req, res) {
 
 
 //Starting the server on environment variable port or 3000
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
