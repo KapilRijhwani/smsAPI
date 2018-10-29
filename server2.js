@@ -1,8 +1,52 @@
+const express = require('express');
+const app = express();
 
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 5000
 
-app.get('/', (req, res) => res.send('Hello World 123 !'))
+app.use(express.json());
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+function validateMissingParams(req){
+    const from = req.body.from;
+    const to = req.body.to;
+    const text = req.body.text;
+    
+    if(!from) 
+        return ({"message" : "", "error" : "from is missing"});
+    if(!to) 
+        return ({"message" : "", "error" : "to is missing"});
+    if(!text) 
+        return ({"message" : "", "error" : "text is missing"});
+
+    if(from.length < 6 || from.length > 16) 
+        return ({"message" : "", "error" : "from is invalid"});
+    if(to.length < 6 || to.length > 16) 
+        return ({"message" : "", "error" : "to is invalid"});
+    if(text.length < 1 || text.length > 120) 
+        return ({"message" : "", "error" : "text is invalid"});
+
+    else return null;
+}
+
+
+//API /inbound/sms
+app.post('/inbound/sms',  (req, res) => {
+    const validateInboundResult = validateMissingParams(req);
+    const from = req.body.from;
+    const to = req.body.to;
+    const text = req.body.text;
+    
+    
+    //Validating the parameters
+    if(validateInboundResult != null){
+        return res.json(validateInboundResult);
+    }else{
+        return ({"message" : "All well", "error" : ""});
+        
+       
+    }
+});
+
+
+
+//Starting the server on environment variable port or 3000
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
