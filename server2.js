@@ -45,7 +45,7 @@ app.post('/inbound/sms',  (req, res) => {
     }
 });
 
-
+app.get('/', (req, res) => res.send('Hello World! 12345'))
 
 //Starting the server on environment variable port or 3000
 const port = process.env.PORT || 3000;
