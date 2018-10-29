@@ -29,13 +29,13 @@ var config = {
 app.use(express.json());
 
 //Connecting to client of Redis cache
-client.on('connect', function() {
-    console.log('Redis client connected');
-});
+// client.on('connect', function() {
+//     console.log('Redis client connected');
+// });
 
-client.on('error', function(err) {
-    console.log('Something went wrong ' + err);
-});
+// client.on('error', function(err) {
+//     console.log('Something went wrong ' + err);
+// });
 
 //Validaing the parameters passed for length and not null conditions.
 function validateMissingParams(req){
